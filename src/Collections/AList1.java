@@ -21,7 +21,7 @@ public class AList1 implements IList {
 
     AList1(int[] array){
         capacity = array.length;
-        components = new int[array.length];
+        components = array;
     }
 
 
@@ -82,6 +82,7 @@ public class AList1 implements IList {
                 System.arraycopy(temp, index + 1, components, index, temp.length - index - 1);
             }
         }
+        components[components.length-1] = 0;
         return number;
     }
 
@@ -89,6 +90,7 @@ public class AList1 implements IList {
     public int removeByIndex(int index) {
         temp = components;
         System.arraycopy(temp, index + 1, components, index, temp.length - index - 1);
+        components[components.length-1] = 0;
         return 0;
     }
 
@@ -123,7 +125,13 @@ public class AList1 implements IList {
 
     @Override
     public boolean removeAll(int[] ar) {
-
-        return false;
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = 0; j < components.length; j++) {
+                if (ar[i] == components[j]) {
+                    components[j] = 0;
+                }
+            }
+        }
+        return true;
     }
 }
