@@ -4,30 +4,54 @@ import java.util.LinkedList;
 
 public class LList1 implements IList {
 
-     public LList1(){
-         int capacity = 10;
-     }
+    int size;
+    Node head;
 
-    LinkedList<String> list = new LinkedList<String>();
+    public static class Node {
+        Object data;
+        Node next;
+    }
 
     @Override
     public void clear() {
-
     }
 
     @Override
     public int size() {
+        return size;
+    }
+
+    // не работает
+    @Override
+    public int get(int index){
+        Node node = new Node();
+        Node tempNode = head;
+        while(tempNode.next != null){
+            for (int i = 1; i == index; i++) {
+                tempNode = node;
+            }
+            break;
+        }
+        System.out.println(tempNode.data);
         return 0;
     }
 
     @Override
-    public int get(int index) {
-        return 0;
-    }
-
-    @Override
-    public boolean add(int value) {
-        return false;
+    public boolean add (int value) {
+        Node node = new Node();
+        node.data = value;
+        node.next = null;
+        if (head == null) {
+            head = node;
+        } else {
+            Node tempNode = head;
+            while (tempNode.next != null) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = node;
+        }
+        size++;
+        return true;
     }
 
     @Override
@@ -47,7 +71,13 @@ public class LList1 implements IList {
 
     @Override
     public boolean contains(int value) {
-        return false;
+        Node tempNode = head;
+        boolean result = false;
+        while (tempNode.next != null) {
+            if((Integer) tempNode.data == value) {
+                result = true;
+            } break;
+        } return result;
     }
 
     @Override
@@ -57,7 +87,12 @@ public class LList1 implements IList {
 
     @Override
     public void print() {
-
+        Node tempNode = head;
+        while (tempNode.next != null) {
+            System.out.println(tempNode.data);
+            tempNode = tempNode.next;
+        }
+        System.out.println(tempNode.data);
     }
 
     @Override
