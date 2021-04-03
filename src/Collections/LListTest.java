@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class LListTest {
     LList1 lList1 = new LList1();
 
@@ -54,21 +57,21 @@ public class LListTest {
         Assertions.assertArrayEquals(actual, expected);
     }
 
-//    @Test
-//    public void test_remove(){
-//        lList1.remove(4);
-//        int[] expected = {1, 2, 3, 5};
-//        int[] actual = lList1.toArray();
-//        Assertions.assertArrayEquals(actual, expected);
-//    }
+    @Test
+    public void test_remove(){
+        lList1.remove(4);
+        int[] expected = {1, 2, 3, 5};
+        int[] actual = lList1.toArray();
+        Assertions.assertArrayEquals(actual, expected);
+    }
 
-//    @Test
-//    public void test_removeByIndex(){
-//        lList1.removeByIndex(2);
-//        int[] expected = {1, 3, 4, 5};
-//        int[] actual = lList1.toArray();
-//        Assertions.assertArrayEquals(actual, expected);
-//    }
+    @Test
+    public void test_removeByIndex(){
+        lList1.removeByIndex(2);
+        int[] expected = {1, 2, 4, 5};
+        int[] actual = lList1.toArray();
+        Assertions.assertArrayEquals(actual, expected);
+    }
 
     @Test
     public void test_containsTrue(){
@@ -91,11 +94,19 @@ public class LListTest {
     }
 
     @Test
-    public void test_print(){
+    public void test_print () {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        lList1.print();
+        Assertions.assertEquals("1 2 3 4 5", output.toString().trim());
+        System.setOut(null);
     }
 
     @Test
-    public void test_toArray(){
+    public void test_toArray () {
+        int[] expected = {1, 2, 3, 4, 5};
+        int[] actual = lList1.toArray();
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test

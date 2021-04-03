@@ -108,7 +108,7 @@ public class LList1 implements IList {
             nodeNext = nodeNext.next;
         }
         nodePrev.next = nodeNext.next;
-        return temp;
+        return size--;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class LList1 implements IList {
             }
             nodePrev.next = nodeNext.next;
 
-        } return 0;
+        } return size--;
     }
 
     @Override
@@ -157,12 +157,12 @@ public class LList1 implements IList {
 
     @Override
     public void print() {
-        Node tempNode = head;
-        while (tempNode.next != null) {
-            System.out.println(tempNode.data);
-            tempNode = tempNode.next;
+        Node n = head;
+        while (n.next != null) {
+            System.out.print(n.data + " ");
+            n = n.next;
         }
-        System.out.print(tempNode.data);
+        System.out.print(n.data);
     }
 
     @Override
