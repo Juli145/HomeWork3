@@ -2,6 +2,7 @@ package Stream;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -11,7 +12,7 @@ public class CasesTest {
 
     @Test
     public void test_getFaculty(){
-        List<Students> expected = cases.listOfFaculty();
-        System.out.println(cases.listOfFaculty());
+        List<Students> actual = cases.listOfFaculty();
+        System.out.println(actual);
     }
 }

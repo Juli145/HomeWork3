@@ -24,8 +24,13 @@ public class Students {
         this.group = group;
 
     }
+
     public String getFaculty(){
         return faculty;
+    }
+
+    public String getInfo(){
+        return id + firstName + lastName + faculty;
     }
 
     public static void main(String[] args) {
