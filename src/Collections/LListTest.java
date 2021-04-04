@@ -110,7 +110,12 @@ public class LListTest {
     }
 
     @Test
-    public void test_removeAll(){
+    public void test_removeAll () {
+        int[] ar = new int[]{5, 3};
+        lList1.removeAll(ar);
+        int[] expected = {1, 2, 4};
+        int[] actual = lList1.toArray();
+        Assertions.assertArrayEquals(expected, actual);
     }
 }
 

@@ -182,7 +182,19 @@ public class LList1 implements IList {
 
     @Override
     public boolean removeAll(int[] ar) {
-        head = null;
+        Node node;
+        for (int i = 0; i < ar.length; i++) {
+            node = head;
+            while (node.next != null) {
+                if ((int) node.data == ar[i]) {
+                    remove((int) node.data);
+                }
+                node = node.next;
+            }
+            if ((int) node.data == ar[i]) {
+                remove((int) node.data);
+            }
+        }
         return true;
     }
 }
